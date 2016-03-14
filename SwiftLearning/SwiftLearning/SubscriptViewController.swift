@@ -12,20 +12,20 @@ struct Matrix {
     let rows: Int, columns: Int
     var grid: [Double]
     init(rows: Int, columns: Int) {
-        self.rows = rows
+        self.rows    = rows
         self.columns = columns
-        grid = Array(count: rows * columns, repeatedValue: 0.0)
+        self.grid = Array(count: rows * columns, repeatedValue: 0.0)
     }
-    func indexIsValidForRow(row: Int, column: Int) -> Bool{
-        return row >= 0 && row < rows && column >= 0 && column <= columns
+    func isValidOfRow(row: Int, column: Int) -> Bool {
+        return row >= 0 && row < rows && column >= 0 && column < columns
     }
     subscript(row: Int, column: Int) -> Double {
         get {
-            assert(indexIsValidForRow(row, column: column), "Invalid row or column")
+            assert(isValidOfRow(row, column: column), "Invalid row or column")
             return grid[row * columns + column]
         }
         set {
-            assert(indexIsValidForRow(row, column: column), "Invalid row or column")
+            assert(isValidOfRow(row, column: column), "Invalid row or column")
             grid[row * columns + column] = newValue
         }
     }
@@ -36,11 +36,12 @@ class SubscriptViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var matrix = Matrix(rows: 2, columns: 2)
-        matrix[0, 1] = 1.5
-        matrix[1, 0] = 3.2
+        var t = Matrix(rows: 2, columns: 3)
+        t[1, 0] = 1.0
+        t[1, 2] = 3.1
         
-        print(matrix[1, 0])
+        print(t[1, 2])
+        
 
         // Do any additional setup after loading the view.
     }
