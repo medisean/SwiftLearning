@@ -10,7 +10,10 @@ import Foundation
 
 class Bicycle: Vehicle {
     var hasBasket = false
-    
+    override var description: String {
+        return super.description + ", bicycle des"
+    }
+
     override func makeNoice() {
         print("bicycle noice")
     }
