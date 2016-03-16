@@ -25,3 +25,4 @@ class Bar: Foo {
 
 var bar = Bar()
 bar.something = 3
+print(bar.something)
