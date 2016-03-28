@@ -112,10 +112,51 @@ enum Switch {
     }
 }
 
-// 5.
+// 5.in protocol header, you cann't use Generic type, but associatedtype
+// below is wrong
+//protocol Container<Element> {
+//    mutating func append(item: Element)
+//    var count: Int{ get }
+//    subscript(i: Int) -> Element { get }
+//}
+
+// you can write like this
+protocol Container {
+    associatedtype ItemType
+    mutating func append(item: ItemType)
+    var count: Int { get }
+    subscript(i: Int) -> ItemType { get }
+}
 
 
+// 6. where
+func allItemMatch<C1: Container, C2: Container where C1.ItemType == C2.ItemType, C1.ItemType: Equatable>(container1: C1, container2: C2) -> Bool {
+    if container1.count != container2.count {
+        return false
+    }
 
+    for i in 0..<container1.count {
+        if container1[i] != container2[i] {
+            return false
+        }
+    }
+    return true
+}
+
+var stackString = Stack<String>()
+stackString.push("yes")
+stackString.push("no")
+
+var stackString2 = Stack<String>()
+stackString2.push("yes")
+stackString2.push("no")
+
+var arrayOfString = ["yes", "no"]
+if allItemMatch(stackString, container2: stackString2) {
+    print("All item match")
+} else {
+    print("Not all item match")
+}
 
 
 
