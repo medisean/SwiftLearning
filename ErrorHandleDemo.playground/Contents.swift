@@ -19,7 +19,43 @@ do {
     let result = try contentsOfFile("input.txt")
     print(result)
 } catch FileError.FileDoesNotExist {
-    print("error occurs")
+    print("file does not exist")
 } catch {
-    
+    print("other errors")
 }
+
+
+
+class People {
+    var name: String?
+    
+    enum People {
+        case COOl
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
