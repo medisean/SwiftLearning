@@ -78,10 +78,29 @@ class GoodProperty: Property {
 
 var goodProperty = GoodProperty()
 goodProperty.test()
+print("---------------")
 
 
+// 6. keyword inout
+func testInOut(inout a: String) {
+    a = "cc"
+}
+var out = "Test inout keyword"
+testInOut(&out)
+print(out) // out is changed to cc
+print("---------------")
 
-
+// 7. multi parameters
+func testMultiParameters(numbers: Int, values: Double...) {
+    var result: Double = 0
+    for value in values {
+        result += value
+    }
+    print(result)
+    print("---------------")
+}
+testMultiParameters(2, values: 2,3,4,5)
+// testMultiParameters(2, values: [3,4,5]) // error call
 
 
 
