@@ -102,12 +102,66 @@ func testMultiParameters(numbers: Int, values: Double...) {
 testMultiParameters(2, values: 2,3,4,5)
 // testMultiParameters(2, values: [3,4,5]) // error call
 
+/// 8. default parameter
+func testDefaultParameter(para1: String, Para2 para2: String = "cool") {
+    print(para1 + para2)
+    print("---------------")
+}
 
+testDefaultParameter("param1 + ")
+testDefaultParameter("test param1 + ", Para2: "param2")
 
+// middle param is default
+func testDefaultParameter2(para1: String, Para2 para2: String = "cool", Param3 para3: String) {
+    print(para1 + para2 + para3)
+    print("---------------")
+}
 
+testDefaultParameter2("p1", Param3: "p3")
 
+enum WechatError: ErrorType {
+    case NoBattery // 手机没电
+    case NoNetwork // 手机没网
+    case NoDataStream // 手机没有流量
+}
 
+// 9. keyword throw and rethrow
+// write try catch and throw by myself
+public enum OwnerError: ErrorType {
+    case NoPermission
+    case NoWord
+    case NotKnown
+}
 
+func testOwner(number: Int) throws {
+    if number == 0 {
+        throw OwnerError.NoPermission
+    } else if number > 0 {
+        throw OwnerError.NoWord
+    } else {
+        throw OwnerError.NotKnown
+    }
+}
+
+func catchThrow(number: Int) {
+    do {
+        try testOwner(number)
+    } catch OwnerError.NoPermission {
+        print("No Permission")
+    } catch OwnerError.NoWord {
+        print("No Word")
+    } catch {
+        print("Not known")
+    }
+}
+
+catchThrow(0)
+catchThrow(1)
+catchThrow(-1)
+
+// rethrow, not understand very well
+
+// noscape solve closure loop problem
 
 
 
