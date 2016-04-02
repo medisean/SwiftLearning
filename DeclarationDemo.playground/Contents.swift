@@ -158,10 +158,49 @@ func catchThrow(number: Int) {
 catchThrow(0)
 catchThrow(1)
 catchThrow(-1)
+print("---------------")
 
 // rethrow, not understand very well
 
 // noscape solve closure loop problem
+
+
+// 10. enumeration
+enum Number {
+    case Integer(Int)
+    case Real(Double)
+}
+
+let f = Number.Integer(10)
+print(f)
+
+// enum and protocol
+enum Gender: String {
+    case Female = "Female"
+    case Male = "Male"
+}
+
+let xGender = Gender.Male
+print(xGender.rawValue)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
