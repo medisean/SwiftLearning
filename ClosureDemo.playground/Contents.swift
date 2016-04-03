@@ -13,13 +13,39 @@ var str = "Hello, playground"
 
 typealias Closure = (parameter1: String, parameter2: String) -> String
 
-func testDisclosure(name: String, closure: Closure) {
+// parameter is closure
+func testClosure(name: String, closure: Closure) {
     print(name)
 }
 
-testDisclosure("cool") { (parameter1, parameter2) -> String in
+testClosure("cool") { (parameter1, parameter2) -> String in
     print(parameter1)
     print(parameter2)
     return "disclosure"
 }
+
+// return value is closure
+
+func simpleFunction(parameter1: String, parameter2: String) -> String {
+    print(parameter1 + parameter2)
+    return parameter1 + parameter2
+}
+
+func anotherClosure(firstName: String, lastName: String) -> (parameter1: String, parameter2: String) -> String {
+    print(firstName + lastName)
+    return simpleFunction
+}
+
+let closure = anotherClosure("Li", lastName: "Lei")
+closure(parameter1: "Li", parameter2: "Mei")
+
+
+
+
+
+
+
+
+
+
 
