@@ -40,8 +40,13 @@ let closure = anotherClosure("Li", lastName: "Lei")
 closure(parameter1: "Li", parameter2: "Mei")
 
 // Custom closure
-typealias Success = (dict: Dictionary<String, AnyObject>) -> String
-typealias Failure = () -> String
+typealias Success = (dict: Dictionary<String, AnyObject>) -> ()
+typealias Failure = () -> ()
+
+enum Response {
+    case Success
+    case Failure
+}
 
 func processDict(dict: Dictionary<String, AnyObject>?, success: Success, failure: Failure) {
     if let dict = dict {
@@ -51,10 +56,10 @@ func processDict(dict: Dictionary<String, AnyObject>?, success: Success, failure
     }
 }
 
-processDict(nil, success: { (dict) -> String in
-    return ""
-    }) { () -> String in
-        return ""
+processDict(["aa":"aa"], success: { (dict) -> () in
+    print("success")
+    }) { () -> () in
+        print("failure")
 }
 
 
