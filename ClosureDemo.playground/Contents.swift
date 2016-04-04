@@ -62,6 +62,39 @@ processDict(["aa":"aa"], success: { (dict) -> () in
         print("failure")
 }
 
+// custom closure 2
+
+enum Result {
+    case Success
+    case Failure
+}
+
+struct Resonse {
+    var result: Result
+    var string: String
+}
+
+typealias CustomClosure = (result: Resonse) -> ()
+func processString(string: String?, response: CustomClosure) {
+    if let string = string {
+        response(result: Resonse(result: .Success, string: string))
+    }
+}
+
+processString("Real String") { (result) in
+    print(result.string)
+}
+processString(nil) { (result) in
+    print(result.string)
+}
+
+
+
+
+
+
+
+
 
 
 
