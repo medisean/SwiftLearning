@@ -37,6 +37,36 @@ let rightSixBits: UInt8 = 0b00000011
 let rightShiftBits = rightSixBits >> 1 // 0b00000001
 print(rightShiftBits)
 
+// 6. Operator function
+struct People {
+    var name: String
+    var age: Int
+//    func - (people: People) -> People { // not allowed
+//        return People(name: people.name, age: self.age - people.age)
+//    }
+}
+
+func + (left: People, right: People) -> People { // global add operator, not allow in struct
+    return People(name: left.name + right.name , age: left.age + right.age)
+}
+
+prefix func - (people: People) -> People {
+    return People(name: people.name, age: -people.age)
+}
+
+let p1 = People(name: "Li", age: 22)
+let p2 = People(name: "Lei", age: 18)
+let p3 = p1 + p2
+print(p3)
+print(-p3)
+
+
+
+
+
+
+
+
 
 
 
