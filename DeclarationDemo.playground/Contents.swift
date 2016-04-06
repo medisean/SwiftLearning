@@ -183,6 +183,29 @@ enum Gender: String {
 let xGender = Gender.Male
 print(xGender.rawValue)
 
+// another enum
+
+enum NestedValue {
+    case name(String)
+    case age(Int)
+    case address(String, String)
+}
+
+let nameValue: NestedValue = NestedValue.name("11")
+let addressValue = NestedValue.address("Shanghai", "Pudong")
+
+switch addressValue {
+case .address(let city, let area):
+    print(city + area)
+default:
+    print("default address")
+}
+
+
+
+
+
+
 
 
 
