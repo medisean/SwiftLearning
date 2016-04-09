@@ -14,6 +14,6 @@ class Vehicle {
         return "Travelling at \(speed) miles per hour"
     }
     func makeNoice() {
-        
+
     }
 }
